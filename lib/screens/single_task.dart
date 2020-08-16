@@ -18,7 +18,7 @@ class SingleTask extends StatelessWidget{
                       icon: Icon(Icons.settings),
                       onPressed: () => Scaffold.of(context).openEndDrawer()))]),
         endDrawer: CustomDrawer(),
-        body: OneTask(task: task)
+        body: Center(child: OneTask(task: task))
     );
   }
 }
