@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:pomodoro/db/database_manager.dart';
 import 'package:pomodoro/models/task.dart';
 import 'package:pomodoro/widgets/auto_size_text.dart';
 
@@ -83,7 +84,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   }
 
   void transition() {
-    //updateTotalTime();
+    updateTotalTime();
     breakTime = !breakTime;
     if (breakTime == false) {
       taskType = 'Work';
@@ -116,7 +117,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
       appBar: AppBar(
           leading: GestureDetector(
               onTap: () {
-                //updateTotalTime();
+                updateTotalTime();
                 if (_everySecondTimer != null) _everySecondTimer.cancel();
                 Navigator.of(context).pop();
               },
@@ -176,12 +177,12 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
         children: <Widget>[
           AutoSizeText(
             breakTime ? 'Break Time' : "Work!",
-            style: TextStyle(fontSize: 36),
+            style: TextStyle(fontSize: 25),
             maxLines: 1,
           ),
           AutoSizeText(
             timerString,
-            style: TextStyle(fontSize: 100),
+            style: TextStyle(fontSize: 50),
             maxLines: 1,
           ),
         ],
@@ -203,7 +204,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
 
   Widget playPauseButton(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.greenAccent,
       child: playPauseIcon,
       onPressed: () {
         if (_everySecondTimer != null && _everySecondTimer.isActive) {
@@ -220,7 +221,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
         child: Icon(Icons.stop),
         color: Colors.red,
         onPressed: () {
-          //updateTotalTime();
+          updateTotalTime();
           if (_everySecondTimer != null) _everySecondTimer.cancel();
           Navigator.of(context).pop();
         });
@@ -236,18 +237,14 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
         });
   }
 
-  /*void updateTotalTime() {
+  void updateTotalTime() {
     if (breakTime == true) {
       return;
     } else {
       int accomplished = (accumulatedSeconds / 60.0).round();
-      if (accomplished > 0) {
-        print('adding this many minutes to task time accomplished: ' +
-            accomplished.toString());
         task.addTime(accomplished);
-        user.tasks.update(
-            task); // assuming task retains key, this will update the task with the new total.
+        final databaseManager = DatabaseManager.getInstance();
+        databaseManager.updateTime(updateTask: task);
       }
     }
-  }*/
-}
+  }

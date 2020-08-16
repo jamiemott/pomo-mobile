@@ -14,7 +14,8 @@ class DatabaseManager {
   static const String SQL_INSERT = 'INSERT INTO pomo_tasks'
       '(name, description, workTime, breakTime, goal, totalTime) '
       'VALUES(?, ?, ?, ?, ?, ?);';
-  static const String SQL_SELECT = 'SELECT * FROM pomo_tasks;';
+  static const String SQL_UPDATE_TIME = 'UPDATE pomo_tasks SET totalTime = ? WHERE id = ?';
+  static const String SQL_SELECT = 'SELECT * FROM pomo_tasks ORDER BY name;';
   static DatabaseManager _instance;
   final Database db;
 
@@ -46,17 +47,24 @@ class DatabaseManager {
     });
   }
 
+  void updateTime({Task updateTask}) {
+    db.transaction((txn) async {
+      await txn.rawUpdate(SQL_UPDATE_TIME, [updateTask.totalTime, updateTask.id]);
+    });
+  }
+
   Future<List<Task>> getTasks() async {
     final taskRecords = await db.rawQuery(SQL_SELECT);
 
     final tasks = taskRecords.map((record){
       return Task(
+          id: record['id'],
           name: record['name'],
           description: record['description'],
           workTime: record['workTime'],
           breakTime: record['breakTime'],
           goal: record['goal'],
-          total: record['totalTime']);
+          totalTime: record['totalTime']);
     }).toList();
     return tasks;
   }

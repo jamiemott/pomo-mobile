@@ -209,7 +209,7 @@ class _NewEntryFormState extends State<NewEntryForm> {
                                           formKey.currentState.save();
                                           final databaseManager = DatabaseManager.getInstance();
                                           databaseManager.saveTask(newTask: newTask);
-                                          Navigator.of(context).pop();
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => TaskListScreen()));
                                         }
                                       },
                                       child: Text('Save Entry')

@@ -36,7 +36,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     if (taskList == null) {
       return TaskScaffold(
-          appBarTitle: 'Loading Entries',
+          appBarTitle: 'Loading Tasks',
           body: Center(child: CircularProgressIndicator())
       );
     } else {

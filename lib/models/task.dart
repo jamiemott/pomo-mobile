@@ -18,7 +18,7 @@ class Task {
   int workTime;
   int breakTime;
   int goal;
-  int total;
+  int totalTime;
 
   Task(
       {this.id,
@@ -27,5 +27,9 @@ class Task {
       this.workTime,
       this.breakTime,
       this.goal,
-      this.total});
+      this.totalTime});
+
+  void addTime(int time) {
+    totalTime += time;
+  }
 }
