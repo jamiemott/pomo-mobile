@@ -5,10 +5,10 @@ class TaskDTO {
   int workTime;
   int breakTime;
   int goal;
-  int total;
+  int totalTime;
 
   String toString() {
     return 'Name: $name, Description: $description, Work Time: $workTime, '
-        'Break Time: $breakTime, Goal: $goal, Total: $total';
+        'Break Time: $breakTime, Goal: $goal, Total: $totalTime';
   }
 }
