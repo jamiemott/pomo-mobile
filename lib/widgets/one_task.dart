@@ -37,7 +37,7 @@ class OneTask extends StatelessWidget {
     );
   }
 
-  //Returns the padding amount based on the phone's orientation
+  //Returns the radius based on the phone's orientation
   double radius(BuildContext context) {
     if (MediaQuery
         .of(context)

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'custom_drawer.dart';
 import 'package:pomodoro/screens/new_entry.dart';
 
-//Creates AppBar, EndDrawer and FAB for all journal screens
+//Creates AppBar, EndDrawer and FAB for screens
 class TaskScaffold extends StatelessWidget {
   final String appBarTitle;
   final Widget body;

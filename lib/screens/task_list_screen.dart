@@ -6,7 +6,7 @@ import 'package:pomodoro/widgets/tasks_scaffold.dart';
 import 'package:pomodoro/widgets/welcome.dart';
 
 
-//Selects which journal screen to display depending on db contents
+//Selects which task list screen to display depending on db contents
 class TaskListScreen extends StatefulWidget {
   static const routeName = 'tasks';
 
@@ -31,7 +31,7 @@ class TaskListScreenState extends State<TaskListScreen> {
     });
   }
 
-  //Display Loading, Welcome or Journal screen depending on state of Journal
+  //Display Loading, Welcome or tasks screen depending on state of taskList
   @override
   Widget build(BuildContext context) {
     if (taskList == null) {
@@ -40,7 +40,7 @@ class TaskListScreenState extends State<TaskListScreen> {
           body: Center(child: CircularProgressIndicator())
       );
     } else {
-      //Welcome Screen if no entries, Journal Screen otherwise
+      //Welcome Screen if no entries, TaskList Screen otherwise
       return TaskScaffold(
           appBarTitle: taskList.isEmpty ? 'Welcome' : 'Tasks',
           body: taskList.isEmpty ? WelcomeScreen() : TaskContents(taskList: taskList)

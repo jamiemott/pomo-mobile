@@ -48,7 +48,7 @@ class AppState extends State<App> {
 
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Journal',
+        title: 'Pomodoro',
         theme: data,
         initialRoute: TaskListScreen.routeName,
         routes: App.routes

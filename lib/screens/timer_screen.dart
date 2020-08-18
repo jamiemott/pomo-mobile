@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -106,7 +105,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
         barrierDismissible: false,
         context: context,
         builder: (context) {
-          Future.delayed(Duration(seconds: 3), () {
+          Future.delayed(Duration(seconds: 2), () {
             Navigator.of(context).pop();
           });
           return AlertDialog(
@@ -150,7 +149,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
     final timerChildren = List<Widget>();
 
     //// add circular progress indicator
-    // this part addss color transition
+    // this part adds color transition
     Animation<Color> _colorAnimation = ColorTween(
       begin: Colors.greenAccent,
       end: Colors.lightBlueAccent,

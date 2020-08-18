@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:pomodoro/db/database_manager.dart';
-import 'package:pomodoro/models/task.dart';
 import 'package:pomodoro/screens/task_list_screen.dart';
 import 'package:pomodoro/widgets/custom_drawer.dart';
 import 'package:pomodoro/db/task_dto.dart';
@@ -167,32 +165,6 @@ class _NewEntryFormState extends State<NewEntryForm> {
                                 }
                             ),
                             SizedBox(height: 8),
-                            /*DropDownFormField(
-                              titleText: 'Category',
-                              hintText: 'Please choose one',
-                              value: newTask.category,
-                              onSaved: (value) {
-                                setState(() {
-                                  newTask.category = value;
-                                });
-                              },
-                              validator: (value) {
-                                if (value == null) {
-                                  return 'Please select a category';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              onChanged: (value) {
-                                setState(() {
-                                  newTask.category = value;
-                                });
-                              },
-                              dataSource: user.tasks.categories,
-                              textField: 'id',
-                              valueField: 'value',
-                            ),
-                            SizedBox(height: 20.0),*/
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[

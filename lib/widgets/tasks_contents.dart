@@ -6,8 +6,6 @@ import 'package:pomodoro/screens/task_list_screen.dart';
 import 'package:pomodoro/widgets/one_task.dart';
 import 'package:pomodoro/screens/timer_screen.dart';
 
-//Code based on class material and from:
-//https://iiro.dev/2018/01/28/implementing-adaptive-master-detail-layouts/
 class TaskContents extends StatefulWidget {
   final TaskList taskList;
 
@@ -68,18 +66,7 @@ class _TaskContentsState extends State<TaskContents> {
                             builder: (context) => SingleTask(
                                 task: this.widget.taskList.tasks[index])))
                   },
-              leading: FlatButton(
-                  child: Icon(Icons.play_arrow),
-                  color: Colors.greenAccent,
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TimerScreen(
-                              task: this.widget.taskList.tasks[index])),
-                    );
-                    setState(() => {});
-                  }),
+              leading: playButton(index),
               title: Text('${this.widget.taskList.tasks[index].name}'),
               subtitle: Text(
                   'Total time: ${this.widget.taskList.tasks[index].totalTime}')),
@@ -128,18 +115,7 @@ class _TaskContentsState extends State<TaskContents> {
                 onTap: () => setState(() {
                       _selectedTask = this.widget.taskList.tasks[index];
                     }),
-                leading: FlatButton(
-                    child: Icon(Icons.play_arrow),
-                    color: Colors.greenAccent,
-                    onPressed: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TimerScreen(
-                                task: this.widget.taskList.tasks[index])),
-                      );
-                      setState(() => {});
-                    }),
+                leading: playButton(index),
                 title: Text('${this.widget.taskList.tasks[index].name}'),
                 subtitle: Text(
                     'Total time: ${this.widget.taskList.tasks[index].totalTime}')),
@@ -150,5 +126,20 @@ class _TaskContentsState extends State<TaskContents> {
       ))),
       Expanded(child: Container(child: OneTask(task: _selectedTask)))
     ]);
+  }
+
+  Widget playButton(int index) {
+    return FlatButton(
+        child: Icon(Icons.play_arrow),
+        color: Colors.greenAccent,
+        onPressed: () async {
+          await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => TimerScreen(
+                    task: this.widget.taskList.tasks[index])),
+          );
+          setState(() => {});
+        });
   }
 }

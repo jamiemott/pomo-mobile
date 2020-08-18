@@ -3,7 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:pomodoro/models/task.dart';
 
 
-//Class to manage the database. Code based on class explorations
 class DatabaseManager {
   static const String DB_NAME = 'pomo.sqlite3.db';
   static const String SQL_CREATE = 'CREATE TABLE IF NOT EXISTS pomo_tasks'
@@ -26,7 +25,6 @@ class DatabaseManager {
     return _instance;
   }
 
-  //Create SQL statement read from file in main
   static Future initialize() async {
     final db = await openDatabase(DB_NAME,
         version: 1,
@@ -39,7 +37,6 @@ class DatabaseManager {
   static void createTables(Database db, String sql) async {
     await db.execute(sql);
   }
-
 
   void saveTask({TaskDTO newTask}) {
     db.transaction((txn) async {

@@ -3,7 +3,7 @@ import 'package:pomodoro/models/task.dart';
 import 'package:pomodoro/widgets/custom_drawer.dart';
 import 'package:pomodoro/widgets/one_task.dart';
 
-//Standalone single entry palge
+//Standalone single task page
 class SingleTask extends StatelessWidget{
   final Task task;
   SingleTask({Key key, @required this.task}) : super(key:key);
