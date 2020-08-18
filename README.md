@@ -1,16 +1,12 @@
-# pomodoro
+# *Pomo Mobile*
 
-Pomodoro timer for mobile
+**Pomo Mobile** is a mobile app created with Dart/Flutter based on my group project CS361-Pomodoro, which is a Dart/Flutter web app.  This app utilizes SQLite as the backend instead of Firebase. The user can add and delete tasks and also toggle between light and dark mode in the settings.  A basic overview of goal progress is given in the task detail view.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Video Walkthrough
 
-A few resources to get you started if this is your first Flutter project:
+Here's a walkthrough:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
