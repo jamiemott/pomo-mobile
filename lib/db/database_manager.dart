@@ -10,7 +10,7 @@ class DatabaseManager {
       '(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, '
       'description TEXT NOT NULL, workTime INTEGER NOT NULL, breakTime INTEGER NOT NULL, '
       'goal INTEGER NOT NULL, totalTime INTEGER NOT NULL);';
-  static const String SQL_DELETE = 'DELETE FROM pomo_tasks;';
+  static const String SQL_DELETE = 'DELETE FROM pomo_tasks WHERE id = ?;';
   static const String SQL_INSERT = 'INSERT INTO pomo_tasks'
       '(name, description, workTime, breakTime, goal, totalTime) '
       'VALUES(?, ?, ?, ?, ?, ?);';
@@ -50,6 +50,12 @@ class DatabaseManager {
   void updateTime({Task updateTask}) {
     db.transaction((txn) async {
       await txn.rawUpdate(SQL_UPDATE_TIME, [updateTask.totalTime, updateTask.id]);
+    });
+  }
+
+  void deleteTask({Task deleteTask}) {
+    db.transaction((txn) async {
+      await txn.rawDelete(SQL_DELETE, [deleteTask.id]);
     });
   }
 

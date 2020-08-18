@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pomodoro/db/database_manager.dart';
@@ -26,6 +28,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   bool blinker = true;
   AnimationController _controller;
   Icon playPauseIcon = Icon(Icons.play_arrow);
+  final player = AudioCache();
 
   @override
   void initState() {
@@ -70,6 +73,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
       }
       if (delta == 30) {
         var alert = showAlert(context);
+        player.play("chime.mp3");
       }
 
       setState(() {});

@@ -11,10 +11,10 @@ class TaskListScreen extends StatefulWidget {
   static const routeName = 'tasks';
 
   @override
-  _TaskListScreenState createState() => _TaskListScreenState();
+  TaskListScreenState createState() => TaskListScreenState();
 }
 
-class _TaskListScreenState extends State<TaskListScreen> {
+class TaskListScreenState extends State<TaskListScreen> {
   TaskList taskList;
 
   @override
